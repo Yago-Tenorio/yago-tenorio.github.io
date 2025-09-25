@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yago Cambraia Tenório</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/a35f75e24a.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg-dark: #0A0A0A;
+            --bg-card: #1C1C1E;
+            --text-primary: #F0F0F0;
+            --text-secondary: #C0C0C0;
+            --accent-green: #4ADE80;
+            --accent-yellow: #FACC15;
+            --accent-purple: #A78BFA;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-secondary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 280px;
+            background-color: #121214;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #2C2C2E;
+        }
+        .content-area {
+            flex-grow: 1;
+            padding: 2rem;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            color: var(--text-secondary);
+        }
+        .nav-item:hover, .nav-item.active {
+            background-color: #2C2C2E;
+            color: var(--text-primary);
+        }
+        .nav-item i {
+            width: 24px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--text-secondary);
+            padding-bottom: 0.5rem;
+        }
+        .sub-section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .text-content {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+        .card {
+            background-color: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #2C2C2E;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .diary-entry {
+            background-color: #121214;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-green);
+        }
+        .diary-date {
+            font-weight: 600;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+        .poem-block {
+            font-style: italic;
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 1px solid #2C2C2E;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+    <div class="main-container">
+
+        <!-- Barra de navegação lateral -->
+        <aside class="sidebar">
+            <div class="profile-header text-center mb-8">
+                <div class="rounded-full w-24 h-24 bg-gray-600 mx-auto mb-4 flex items-center justify-center">
+                    <i class="fas fa-user-circle text-5xl text-gray-400"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-white">Yago C. Tenório</h1>
+                <p class="text-sm text-gray-400 mt-1">Diário • Projetos • Poemas</p>
+            </div>
+            
+            <nav id="nav-menu" class="flex flex-col flex-grow">
+                <a href="#" class="nav-item active" data-target="sobre">
+                    <i class="fas fa-id-card"></i>
+                    <span>Sobre</span>
+                </a>
+                <a href="#" class="nav-item" data-target="cotidiano">
+                    <i class="fas fa-book"></i>
+                    <span>Cotidiano</span>
+                </a>
+                <a href="#" class="nav-item" data-target="sonhos">
+                    <i class="fas fa-star"></i>
+                    <span>Sonhos & Metas</span>
+                </a>
+                <a href="#" class="nav-item" data-target="pensamentos">
+                    <i class="fas fa-brain"></i>
+                    <span>Pensamentos</span>
+                </a>
+                <a href="#" class="nav-item" data-target="poemas">
+                    <i class="fas fa-feather-alt"></i>
+                    <span>Poemas</span>
+                </a>
+                <a href="#" class="nav-item" data-target="projetos">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projetos</span>
+                </a>
+                <a href="#" class="nav-item" data-target="contato">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contato</span>
+                </a>
+            </nav>
+            
+            <footer class="text-center text-gray-500 text-xs mt-auto pt-4 border-t border-gray-700">
+                Portal pessoal — Yago Cambraia Tenório.
+            </footer>
+        </aside>
+
+        <!-- Área de conteúdo principal -->
+        <main class="content-area">
+
+            <!-- Seção: Sobre mim -->
+            <div id="sobre" class="content-section">
+                <h2 class="section-title">Sobre mim</h2>
+                <div class="card space-y-4">
+                    <p class="text-content">Sou Yago Cambraia Tenório. Escrevo porque preciso colocar ordem no que sinto. Estudo química e cinética (cálculos de entalpia me acalmam), falo russo, e encontro silêncio nas trilhas e na estrada com minha Kawasaki 400. Me defino por contradições: apaixonado por mundos técnicos e por textos que tentam traduzir a solidão. Invisto em ideias e estou no processo de criar uma empresa nos EUA no setor de defesa com foco em drones — um projeto que mistura ambição prática e fascínio por sistemas. Não gosto de fotografias; prefiro imagens que deixem espaço para a imaginação.</p>
+                    <div class="grid md:grid-cols-2 gap-8 mt-8">
+                        <div>
+                            <h3 class="sub-section-title">Minhas Paixões</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center"><i class="fas fa-flask text-purple-400 mr-3"></i> Química & Cinética</li>
+                                <li class="flex items-center"><i class="fas fa-motorcycle text-red-400 mr-3"></i> Minha Kawasaki 400</li>
+                                <li class="flex items-center"><i class="fas fa-language text-blue-400 mr-3"></i> Idioma Russo</li>
+                                <li class="flex items-center"><i class="fas fa-mountain text-green-400 mr-3"></i> Trilhas e Natureza</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="sub-section-title">A Essência</h3>
+                            <p class="text-content">Me defino por contradições: apaixonado por mundos técnicos e por textos que tentam traduzir a solidão. A Kawasaki e os cálculos são a ordem que busco, enquanto a escrita é a ferramenta para navegar no caos emocional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção: Cotidiano -->
+            <div id="cotidiano" class="content-section hidden">
+                <h2 class="section-title">Cotidiano (diário)</h2>
+                <p class="text-content mb-6">Momentos reais: estudos, ansiedade, trilhas, a Kawasaki, rascunhos de poemas e textos. Pequenas rotinas que me ancoram.</p>
+                <div class="space-y-6">
+                    <div class="diary-entry">
+                        <p class="diary-date">23/09/2025</p>
+                        <p class="text-content mt-2">“Acordei com ansiedade — lembrei da trilha que ainda quero terminar. Usei a moto para escoar pensamentos e escrevi para não me perder nas dúvidas.”</p>
+                    </div>
+                    <div class="diary-entry">
+                        <p class="diary-date">14/08/2025</p>
+                        <p class="text-content mt-2">“Dediquei a manhã a cálculos de entalpia e à revisão de um capítulo do eBook sobre IA. À noite escrevi versos sobre culpa e recomeço.”</p>
+                    </div>
+                    <div class="diary-entry">
+                        <p class="diary-date">05/07/2025</p>
+                        <p class="text-content mt-2">“Final de semana na estrada. A paisagem borrada é o único silêncio que consigo encontrar. A sensação de velocidade é uma forma de meditação. Voltei com novas ideias para o Ordo Primaris.”</p>
+                    </div>
+                    <div class="diary-entry">
+                        <p class="diary-date">01/06/2025</p>
+                        <p class="text-content mt-2">“Cálculos de entalpia para a faculdade. A precisão dos números é um refúgio. É o oposto da incerteza dos sentimentos. Escrevi um rascunho de um poema sobre a solidão das montanhas.”</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção: Sonhos & Metas -->
+            <div id="sonhos" class="content-section hidden">
+                <h2 class="section-title">Sonhos & Metas</h2>
+                <p class="text-content mb-6">Objetivos claros: abrir empresa de drones/defesa nos EUA, lançar 10 eBooks, consolidar o universo Ordo Primaris e desenvolver protótipos/armaduras cinematográficas.</p>
+                <div class="space-y-6">
+                    <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-rocket text-5xl text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Empresa de Drones/Defesa nos EUA</h3>
+                            <p class="text-sm mt-1 text-gray-400">A prioridade máxima. É a junção do fascínio técnico com a ambição prática, buscando inovar em sistemas de defesa e tecnologia autônoma. Um projeto que reflete a minha busca por ordem e controle.</p>
+                        </div>
+                    </div>
+                    <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-book-open text-5xl text-yellow-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Escrever 10 eBooks</h3>
+                            <p class="text-sm mt-1 text-gray-400">Cada eBook com mais de 180 páginas, explorando temas como IA e Marketing Digital. É a forma de compartilhar conhecimento e solidificar minhas ideias no campo da tecnologia.</p>
+                        </div>
+                    </div>
+                    <div class="card p-6 flex flex-col md:flex-row items-center gap-6">
+                        <div class="flex-shrink-0">
+                            <i class="fas fa-shield-alt text-5xl text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white">Universo Ordo Primaris</h3>
+                            <p class="text-sm mt-1 text-gray-400">Um projeto criativo de média prioridade. É a tentativa de dar forma a um mundo de ficção científica, com suas próprias doutrinas, insígnias e história. Uma metáfora para a busca de ordem interna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção: Pensamentos & Textos -->
+            <div id="pensamentos" class="content-section hidden">
+                <h2 class="section-title">Pensamentos & Textos</h2>
+                <p class="text-content mb-6">Fragmentos honestos que já compartilhei: sobre solidão, culpa por paradas que não dei continuidade, e a busca por um amor que faça sentido.</p>
+                <div class="space-y-8">
+                    <blockquote class="border-l-4 border-gray-600 pl-4 italic bg-gray-800 p-4 rounded-md">
+                        <p class="text-base text-gray-300">“Nunca deixei de lutar; deixei de acreditar que a luta me devolveria tudo. Guardei pedaços de afetos que não consertei a tempo. Hoje escrevo para entender o que ainda posso salvar.”</p>
+                    </blockquote>
+                    <blockquote class="border-l-4 border-gray-600 pl-4 italic bg-gray-800 p-4 rounded-md">
+                        <p class="text-base text-gray-300">“Construir Ordo Primaris é transformar medo em ordem. É dar uma forma — insígnias, normas, uniformes — ao que no fundo é uma vontade de organizar minha própria vida.”</p>
+                    </blockquote>
+                    <blockquote class="border-l-4 border-gray-600 pl-4 italic bg-gray-800 p-4 rounded-md">
+                        <p class="text-base text-gray-300">“O amor não é a solução para a solidão, mas a prova de que a solidão não é permanente. As lembranças de Mariusa e a relação com Micaely são lembretes disso.”</p>
+                    </blockquote>
+                </div>
+            </div>
+
+            <!-- Seção: Poemas -->
+            <div id="poemas" class="content-section hidden">
+                <h2 class="section-title">Poemas</h2>
+                <p class="text-content mb-6">Poemas curtos e densos, escritos nas noites mais silenciosas.</p>
+                <div class="space-y-8">
+                    <div class="poem-block">
+                        <p>No meu casco guardo erros —<br>Memórias que não cicatrizaram,<br>Escrevo para arrancar o pó das palavras.</p>
+                    </div>
+                    <div class="poem-block">
+                        <p>A estrada não promete:<br>Oferece apenas o som do vento,<br>E eu aprendo a ouvir o que sobra.</p>
+                    </div>
+                    <div class="poem-block">
+                        <p>A entalpia negativa dos meus dias:<br>Calor liberado em reações silenciosas,<br>Onde o que se perde é mais real que o que se ganha.</p>
+                    </div>
+                    <div class="poem-block">
+                        <p>O russo não é língua, mas refúgio.<br>Nós, as palavras, e o frio que nos cala,<br>Enquanto as luzes se apagam nas grandes cidades.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção: Projetos -->
+            <div id="projetos" class="content-section hidden">
+                <h2 class="section-title">Projetos</h2>
+                <p class="text-content mb-6">Visões e protótipos — do técnico ao literário.</p>
+                <div class="space-y-12">
+                    <div class="card p-6 grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-1">
+                            <img src="https://placehold.co/400x300/1C1C1E/C0C0C0?text=Drone" alt="Imagem simbólica de drone de defesa" class="project-image">
+                        </div>
+                        <div class="md:col-span-2">
+                            <h3 class="sub-section-title mt-0">Empresa de Drones e Tecnologias de Defesa (EUA)</h3>
+                            <p class="text-content">A principal iniciativa. Foco no desenvolvimento de sistemas autônomos e tecnologias de ponta para o setor de defesa. Mistura a paixão por hardware e software com o rigor de um negócio real.</p>
+                        </div>
+                    </div>
+                    <div class="card p-6 grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-1">
+                            <img src="https://placehold.co/400x300/1C1C1E/C0C0C0?text=Ordo%20Primaris" alt="Imagem simbólica do universo Ordo Primaris" class="project-image">
+                        </div>
+                        <div class="md:col-span-2">
+                            <h3 class="sub-section-title mt-0">Ordo Primaris — Universo Criativo</h3>
+                            <p class="text-content">Um universo de ficção científica em desenvolvimento, com uma lore detalhada, insígnias, doutrinas e protótipos de armaduras. É a forma de expressar a criatividade e dar forma à minha própria filosofia.</p>
+                        </div>
+                    </div>
+                    <div class="card p-6 grid md:grid-cols-3 gap-6 items-center">
+                        <div class="md:col-span-1">
+                            <img src="https://placehold.co/400x300/1C1C1E/C0C0C0?text=Ebooks" alt="Imagem simbólica de livros digitais" class="project-image">
+                        </div>
+                        <div class="md:col-span-2">
+                            <h3 class="sub-section-title mt-0">eBooks — IA e Marketing Digital 5.0</h3>
+                            <p class="text-content">Publicações que consolidam meu conhecimento em IA e nas novas fronteiras do Marketing Digital. Cada livro é um projeto de longa duração, com o objetivo de oferecer conteúdo profundo e de qualidade.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção: Contato -->
+            <div id="contato" class="content-section hidden">
+                <h2 class="section-title">Contato</h2>
+                <p class="text-content mb-6">Um espaço simbólico para recados ou mensagens reais.</p>
+                <div class="card p-6">
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400">Nome</label>
+                            <input type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400">Email</label>
+                            <input type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400">Mensagem</label>
+                            <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-gray-100 focus:outline-none focus:ring-1 focus:ring-purple-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-4 py-2 bg-purple-600 text-white font-semibold rounded-md hover:bg-purple-700 transition-colors">Enviar Mensagem</button>
+                        <p id="form-message" class="text-sm text-center mt-4 text-gray-400"></p>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navMenu = document.getElementById('nav-menu');
+            const sections = document.querySelectorAll('.content-section');
+
+            navMenu.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                const target = event.target.closest('.nav-item');
+                if (!target) return;
+
+                const targetId = target.getAttribute('data-target');
+
+                // Esconde todas as seções
+                sections.forEach(section => {
+                    section.classList.add('hidden');
+                });
+
+                // Remove o estado 'active' de todos os itens do menu
+                document.querySelectorAll('.nav-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Mostra a seção alvo e adiciona a classe 'active' ao item do menu
+                document.getElementById(targetId).classList.remove('hidden');
+                target.classList.add('active');
+            });
+            
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const messageElement = document.getElementById('form-message');
+                messageElement.textContent = "Agradeço o seu contato! Este formulário é simbólico e não envia mensagens para um servidor. O seu recado já faz parte deste portal pessoal.";
+                messageElement.classList.remove('text-gray-400', 'text-red-400');
+                messageElement.classList.add('text-green-400');
+            });
+        });
+    </script>
+</body>
+</html>
